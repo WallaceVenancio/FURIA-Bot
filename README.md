@@ -28,5 +28,5 @@ Você pode adicionar o bot ao seu servidor do Discord clicando no link abaixo:
 > ⚠️ Estes tokens são fornecidos **exclusivamente para testes internos e demonstrações** com a equipe da FURIA. Não utilize em projetos públicos ou fora do ambiente de testes.
 
 ```env
-DISCORD_TOKEN=MTM2NTA3OTIxMTk4MjcxNzA0MQ.GCJ12p.utUnYnXll34IMYh_p_t1NjHNPUEzAoJB8NdXqY
+DISCORD_TOKEN=MTM2NTA3OTIxMTk4MjcxNzA0MQ.GCJ12p.utUnYnXll34IMYh_p_t1NjHNPUEzAoJB8NdXqY #INVALID TOKEN
 PANDASCORE_TOKEN=c_7e8vUuX8obYa9cMc1ozj7jSTa7ZQjlJ4Wsovl7L2EzdLoxFCQ
