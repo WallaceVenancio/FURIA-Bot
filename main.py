@@ -222,7 +222,7 @@ async def jogadores_info(ctx, nome: str):
 
     bandeiras = {
         "br": "🇧🇷", "us": "🇺🇸", "ua": "🇺🇦", "pl": "🇵🇱", "se": "🇸🇪",
-        "dk": "🇩🇰", "de": "🇩🇪", "fr": "🇫🇷", "ca": "🇨🇦"
+        "dk": "🇩🇰", "de": "🇩🇪", "fr": "🇫🇷", "ca": "🇨🇦", "lv": "🇱🇻", "kz": "🇰🇿", 
     }
     bandeira = bandeiras.get(nacionalidade.lower(), "🏳️")
 
@@ -255,7 +255,6 @@ async def help_command(ctx):
     embed.add_field(name="`.furia`", value="🐺 Informações sobre a organização FURIA.", inline=False)
     embed.add_field(name="`.resultados`", value="📜 Últimos resultados da FURIA CS.", inline=False)
     embed.add_field(name="`.agenda`", value="🗓️ Próximos confrontos da FURIA CS.", inline=False)
-    embed.add_field(name="`.torneios`", value="🏆 Mostra os torneios da FURIA em 2025.", inline=False)
     embed.add_field(name="`.jogadores`", value="👥 Lista os jogadores disponíveis para ver info.", inline=False)
     embed.add_field(name="`.info <nome>`", value="ℹ️ Informações detalhadas de um jogador da FURIA.", inline=False)
 
@@ -263,4 +262,4 @@ async def help_command(ctx):
     await ctx.send(embed=embed)
 
 
-bot.run("MTM2NTA3OTIxMTk4MjcxNzA0MQ.GCJ12p.utUnYnXll34IMYh_p_t1NjHNPUEzAoJB8NdXqY")
+bot.run("MTM2NTA3OTIxMTk4MjcxNzA0MQ.G31hpS.IvEBy9AE0l4t74NCWVjHdv7-tGIerqEWufBxBA")
