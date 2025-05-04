@@ -8,7 +8,6 @@ Um bot desenvolvido com `discord.py` que fornece informações em tempo real sob
 - `.info <nome>` – Mostra idade, data de nascimento, nacionalidade (com bandeira) e imagem do jogador da FURIA.
 - `.resultados` – Mostra os últimos resultados da FURIA CS.
 - `.agenda` – Lista as próximas partidas da FURIA CS.
-- `.torneios` – Lista torneios de 2025 que a FURIA CS participou ou irá participar.
 - `.furia` – Informações gerais sobre a organização.
 - `.loja` – Acesso direto à loja oficial da FURIA.
 - `.redes` – Links das redes sociais da organização.
