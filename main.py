@@ -262,4 +262,4 @@ async def help_command(ctx):
     await ctx.send(embed=embed)
 
 
-bot.run("INSIRA_O_TOKEN_AQUI")
+bot.run ##("INSIRA_O_TOKEN_AQUI_TiIRANDO_AS_"#")
