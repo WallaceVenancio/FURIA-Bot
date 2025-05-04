@@ -86,7 +86,7 @@ async def furia(ctx:commands.Context):
 async def resultados(ctx):
     team_id = 124530
     team_name = "FURIA"
-    token = "c_7e8vUuX8obYa9cMc1ozj7jSTa7ZQjlJ4Wsovl7L2EzdLoxFCQ"
+    token = "TOKEN_DO_PANDA"
 
     url = f"https://api.pandascore.co/matches/past?filter[opponent_id]={team_id}&sort=-begin_at&token={token}"
     headers = {"Accept": "application/json"}
