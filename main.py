@@ -268,4 +268,4 @@ async def help_command(ctx):
     await ctx.send(embed=embed)
 
 
-bot.run (#"MTM2NTA3OTIxMTk4MjcxNzA0MQ.G6YK6_.A1cVncM3sWvunusd3xJeWNI4r73TYw_fIA6mKw" Tire o #)
+bot.run ("MTM2NTA3OTIxMTk4MjcxNzA0MQ.GqpKtN.IeMoJhrsO9yCtcnHLbSYCennsGxJoIlY0-p_UM")
