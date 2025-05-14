@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import requests
+import aiohttp
 from discord import Embed
 from datetime import datetime
 
@@ -81,55 +82,59 @@ async def furia(ctx:commands.Context):
     meu_embed.set_footer(text="Unimos pessoas e alimentamos sonhos dentro e fora dos jogos.")
     await ctx.reply(embed=meu_embed, file=logo)
 
-
 @bot.command(name="resultados")  # Para as partidas passadas da FURIA CS
 async def resultados(ctx):
     team_id = 124530
     team_name = "FURIA"
-    token = "TOKEN_DO_PANDA"
+    token = "c_7e8vUuX8obYa9cMc1ozj7jSTa7ZQjlJ4Wsovl7L2EzdLoxFCQ"
 
-    url = f"https://api.pandascore.co/matches/past?filter[opponent_id]={team_id}&sort=-begin_at&token={token}"
-    headers = {"Accept": "application/json"}
-    response = requests.get(url, headers=headers)
+    url = f"https://api.pandascore.co/teams/{team_id}/matches?sort=-begin_at&per_page=5&filter[status]=finished" # Paginação ajustada para pegar as últimas 5 partidas
+    headers = {
+        "Accept": "application/json",
+        "Authorization": f"Bearer {token}"
+    }
 
-    if response.status_code != 200:
-        await ctx.send("❌ Erro ao buscar partidas.")
-        return
+    # Requisição assíncrona com aiohttp
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url, headers=headers) as response:
+            if response.status != 200:
+                await ctx.send("❌ Erro ao buscar partidas.")
+                return
 
-    past_matches = response.json()
+            past_matches = await response.json()
 
-    if not isinstance(past_matches, list) or not past_matches:
-        await ctx.send("❌ Nenhuma partida passada encontrada.")
-        return
+            if not isinstance(past_matches, list) or not past_matches:
+                await ctx.send("❌ Nenhuma partida passada encontrada.")
+                return
 
-    past_info = []
-    for match in past_matches[:5]:
-        opponents = match.get('opponents', [])
-        opponent_names = [op['opponent']['name'] for op in opponents if op['opponent']['id'] != team_id]
-        opponent_name = opponent_names[0] if opponent_names else 'Adversário indefinido'
+            past_info = []
+            for match in past_matches:
+                opponents = match.get('opponents', [])
+                opponent_names = [op['opponent']['name'] for op in opponents if op['opponent']['id'] != team_id]
+                opponent_name = opponent_names[0] if opponent_names else 'Adversário indefinido'
 
-        begin_at = match.get('begin_at')
-        begin_at = datetime.fromisoformat(begin_at.replace('Z', '+00:00')).strftime('%d/%m/%Y %H:%M') if begin_at else 'Data não definida'
+                begin_at = match.get('begin_at')
+                begin_at = datetime.fromisoformat(begin_at.replace('Z', '+00:00')).strftime('%d/%m/%Y %H:%M') if begin_at else 'Data não definida'
 
-        winner_data = match.get('winner')
-        winner = winner_data.get('name') if winner_data else 'Indefinido'
-        result = '✅ Vitória' if winner == team_name else '❌ Derrota'
+                winner_data = match.get('winner')
+                winner = winner_data.get('name') if winner_data else 'Indefinido'
+                result = '✅ Vitória' if winner == team_name else '❌ Derrota'
 
-        past_info.append(f"Vs {opponent_name} em {begin_at} - {result}")
+                past_info.append(f"Vs {opponent_name} em {begin_at} - {result}")
 
-    past_list = '\n'.join(past_info) if past_info else 'Nenhuma partida passada encontrada.'
+            past_list = '\n'.join(past_info) if past_info else 'Nenhuma partida passada encontrada.'
 
-    # Enviar com Embed
-    embed = discord.Embed(
-        title=f"📜 Últimos resultados da {team_name}",
-        color=0x1e1e1e
-    )
-    embed.add_field(
-        name="Últimos confrontos",
-        value=past_list,
-        inline=False
-    )
-    await ctx.send(embed=embed)
+            # Enviar com Embed
+            embed = discord.Embed(
+                title=f"📜 Últimos resultados da {team_name}",
+                color=0x1e1e1e
+            )
+            embed.add_field(
+                name="Últimos confrontos",
+                value=past_list,
+                inline=False
+            )
+            await ctx.send(embed=embed)
 
 @bot.command(name="agenda")  # Para as próximas partidas da FURIA CS
 async def agenda(ctx):
@@ -262,4 +267,4 @@ async def help_command(ctx):
     await ctx.send(embed=embed)
 
 
-bot.run ##("INSIRA_O_TOKEN_AQUI_TiIRANDO_AS_"#")
+bot.run ("MTM2NTA3OTIxMTk4MjcxNzA0MQ.GVvuEB.pR-p6f3XNdS4iZ8EM0VgAeuTFKw3_5D5Y5WOBk")
