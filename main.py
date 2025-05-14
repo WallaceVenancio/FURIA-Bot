@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import requests
-import aiohttp
+import aiohttp 
 from discord import Embed
 from datetime import datetime
 
@@ -81,6 +81,7 @@ async def furia(ctx:commands.Context):
     meu_embed.set_author(name="Quem Somos?", url="https://www.furia.gg/quem-somos")
     meu_embed.set_footer(text="Unimos pessoas e alimentamos sonhos dentro e fora dos jogos.")
     await ctx.reply(embed=meu_embed, file=logo)
+
 
 @bot.command(name="resultados")  # Para as partidas passadas da FURIA CS
 async def resultados(ctx):
@@ -188,10 +189,10 @@ async def agenda(ctx):
 async def jogadores(ctx):
     embed = discord.Embed(
         title="🧍‍♂️ Qual jogador você quer informações?",
-        description="Use `.info <nome>` para obter os detalhes.\nEx: `.info yuurih`",
+        description="Use .info <nome> para obter os detalhes.\nEx: .info yuurih",
         color=discord.Color.blue()
     )
-    embed.add_field(name="Opções disponíveis:", value="`yuurih`, `yekindar`, `kscerato`, `chelo`, `fallen`, `skullz`, `molodoy` e `guerri`", inline=False)
+    embed.add_field(name="Opções disponíveis:", value="yuurih, yekindar, kscerato, chelo, fallen, skullz, molodoy e guerri", inline=False)
     embed.set_footer(text="Use .info <nome> para continuar.")
     await ctx.send(embed=embed)
 
@@ -241,7 +242,7 @@ async def jogadores_info(ctx, nome: str):
     embed.add_field(name="Nickname", value=nome_completo, inline=True)
     embed.add_field(name="Idade", value=f"{idade} anos" if idade else "N/A", inline=True)
     embed.add_field(name="Nascimento", value=nascimento or "Não informado", inline=True)
-    embed.add_field(name="Nacionalidade", value=f"{bandeira} `{nacionalidade.upper()}`", inline=True)
+    embed.add_field(name="Nacionalidade", value=f"{bandeira} {nacionalidade.upper()}", inline=True)
     embed.set_footer(text="Informações extraídas diretamente do time da FURIA (PandaScore API)")
 
     await ctx.send(embed=embed)
@@ -255,13 +256,13 @@ async def help_command(ctx):
     )
     embed.set_thumbnail(url="https://pbs.twimg.com/profile_images/1774820117538295808/xilo38_v_400x400.png")
 
-    embed.add_field(name="`.loja`", value="🛍️ Mostra a coleção da FURIA com a Adidas.", inline=False)
-    embed.add_field(name="`.redes`", value="📱 Mostra as redes sociais oficiais da FURIA.", inline=False)
-    embed.add_field(name="`.furia`", value="🐺 Informações sobre a organização FURIA.", inline=False)
-    embed.add_field(name="`.resultados`", value="📜 Últimos resultados da FURIA CS.", inline=False)
-    embed.add_field(name="`.agenda`", value="🗓️ Próximos confrontos da FURIA CS.", inline=False)
-    embed.add_field(name="`.jogadores`", value="👥 Lista os jogadores disponíveis para ver info.", inline=False)
-    embed.add_field(name="`.info <nome>`", value="ℹ️ Informações detalhadas de um jogador da FURIA.", inline=False)
+    embed.add_field(name=".loja", value="🛍️ Mostra a coleção da FURIA com a Adidas.", inline=False)
+    embed.add_field(name=".redes", value="📱 Mostra as redes sociais oficiais da FURIA.", inline=False)
+    embed.add_field(name=".furia", value="🐺 Informações sobre a organização FURIA.", inline=False)
+    embed.add_field(name=".resultados", value="📜 Últimos resultados da FURIA CS.", inline=False)
+    embed.add_field(name=".agenda", value="🗓️ Próximos confrontos da FURIA CS.", inline=False)
+    embed.add_field(name=".jogadores", value="👥 Lista os jogadores disponíveis para ver info.", inline=False)
+    embed.add_field(name=".info <nome>", value="ℹ️ Informações detalhadas de um jogador da FURIA.", inline=False)
 
     embed.set_footer(text="Use um comando com o prefixo '.' para começar. Ex: .loja")
     await ctx.send(embed=embed)
